@@ -34,7 +34,7 @@ module.exports=(doctors) => {
             console.log(user)
             console.log(tokenPayload);
             try{
-                messageapi(contact,'a/c creation triggered');
+                messageapi(contact,`${name} Signup success !!`);
             }
             catch(err){
                 console.error(err);
@@ -64,7 +64,7 @@ module.exports=(doctors) => {
             const token = jwt.sign(tokenPayload, JWT_SECRET, { expiresIn: '1h' });
             res.status(201).json({message: 'User found', token: token });
             try{
-                messageapi(contact,'Login triggered');
+                messageapi(contact,`${User.name} Login success !!`);
 
             }
             catch(err){

@@ -16,11 +16,11 @@ module.exports=(book,query)=>{
                 contact:contact,
                 userid:req.userid
             }
-            const note=await query.insertOne(params);
+            const user=await query.insertOne(params);
             console.log(params)
-            res.status(201).json({message: 'complaint rejistered successfully', note: note });
+            res.status(201).json({message: 'complaint registered successfully'});
             try{
-                messageapi(contact,'complaint registered successfully');
+                messageapi(contact,` ${user.name} your complaint has been registered!!`);
             }
             catch(err){
                 console.error(err);
@@ -48,7 +48,7 @@ module.exports=(book,query)=>{
             }
             const note=await book.insertOne(params);
             console.log(params)
-            res.status(201).json({message: 'complaint rejistered successfully', note: note });
+            res.status(201).json({message: 'appointment booked succesfully', note: note });
             try{
                 messageapi(contact,'appointment booked successfully ');
             }
